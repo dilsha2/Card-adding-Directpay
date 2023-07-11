@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directpay|CardAdd</title>
+</head>
+
+<body>
+<div id="card_container"></div>
+
+<script src="https://cdn.directpay.lk/dev/v1/directpayCardPayment.js?v=1"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    DirectPayCardPayment.init({
+        container: "card_container",
+        merchantId: '[[${merchantId}]]',
+        type: 'ADD_CARD',
+        currency: '[[${currency}]]',
+        refCode: '[[${refCode}]]',
+        customerEmail: '[[${customerEmail}]]',
+        customerMobile: '[[${customerMobile}]]',
+        cardNickname: '[[${cardNickname}]]',
+        debug: [[${debug}]],
+        responseCallback: responseCallback,
+        errorCallback: errorCallback,
+        logo: '[[${logo}]]',
+        apiKey: '[[${apiKey}]]'
+    });
+
+    //response callback.
+    function responseCallback(result) {
+        console.log("successCallback-Client", result);
+        alert(JSON.stringify(result));
+    }
+
+    //error callback
+    function errorCallback(result) {
+        console.log("successCallback-Client", result);
+        alert(JSON.stringify(result));
+    }
+    /*]]>*/
+</script>
+</body>
+</html>
